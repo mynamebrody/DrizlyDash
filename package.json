@@ -1,0 +1,43 @@
+{
+  "name": "DrizlyDash",
+  "version": "1.0.0",
+  "description": "Order alcohol from Drizly with Amazon Dash Button",
+  "main": "app.js",
+  "dependencies": {
+    "arp-listener": "0.0.0",
+    "node-dash-button": "^0.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sudo node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bhberson@github.com/bhberson/DrizlyDash.git"
+  },
+  "keywords": [
+    "alcohol",
+    "Drizly",
+    "Beer",
+    "API",
+    "Liquor",
+    "six pack",
+    "Amazon",
+    "AmazonDash",
+    "Dash",
+    "Button"
+  ],
+  "author": {
+    "name": "Brody Berson",
+    "email": "brody.berson@gmail.com",
+    "url": "http://www.brodyberson.com"
+  },
+  "contributors": [
+    {}],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bhberson/DrizlyDash/issues"
+  },
+  "homepage": "https://github.com/bhberson/DrizlyDash#readme"
+}
