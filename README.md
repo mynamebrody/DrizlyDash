@@ -1,4 +1,4 @@
-![Drizly Dash](http://i.imgur.com/DD944Cz.jpg)
+![Drizly Dash](http://i.imgur.com/KbanITJ.png)
 DrizlyDash
 ====
 This is a node.js application that "hacks" your [Amazon Dash Button](http://www.amazon.com/dashbutton) to order you alcohol from [Drizly](https://www.drizly.com/)!
