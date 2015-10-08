@@ -33,7 +33,7 @@ prompt.get([{
   if (err) {
     return console.error('Login failed:', err);
   }
-  console.log('Login successful!  Server responded with: \n', JSON.parse(body).token);
+  console.log('Login successful!  Server responded with: \n', JSON.parse(body));
 });
 });
 
