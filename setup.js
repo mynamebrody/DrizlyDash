@@ -10,12 +10,12 @@ prompt.start();
 
 // Login
 prompt.get([{
-    name: 'partner',
-    description: 'Enter your Drizly API Partner Token',
-    required: true
-  }, {
     name: 'url',
     description: 'Enter the Drizly API URL',
+    required: true
+  }, {
+    name: 'partner',
+    description: 'Enter your Drizly API Partner Token',
     required: true
   }, {
     name: 'email',
@@ -82,7 +82,7 @@ prompt.get([{
 
       var fs = require('fs');
       var data = 'DASH_MAC_ADDRESS=XX:yy:zz:11:22:33\nURL='+baseURL+'\nPARTNER_TOKEN='+partnerToken+'\nTOKEN='+userToken+'\nUSER_ID='+userid+'\nADDRESS_ID='+addressid+'\nCREDIT_CARD_ID='+creditcardid+'\nLATITUDE='+lat+'\nLONGITUDE='+lon+'\nSTORE_ID='+storeid;
-      fs.writeFile('example.env', data, function(err) {
+      fs.writeFile('.env', data, function(err) {
           if(err) {
               return console.log(err);
           }
