@@ -55,7 +55,6 @@ prompt.get([{
   });
 });
 
-
 // Query Store
 prompt.get([{
   name:'query',
@@ -64,10 +63,13 @@ prompt.get([{
   console.log('Command-line input received:');
   console.log('  query: ' + result.query);
 
-  var endpoint = process.env.URL + '/catalog/filter?partner_token=' + process.env.PARTNER_TOKEN + '&token=' + process.env.TOKEN + '&store_id=92&q=' + result.query;
+  var endpoint = process.env.URL + '/catalog/filter?partner_token=' + process.env.PARTNER_TOKEN + '&token=' + process.env.TOKEN + '&per_page=100&store_id=92&q=' + result.query;
 
-  request.get(endpoint).on('response', function(response) {
-    console.log(response);
+  request(endpoint, function (err, response, body) {
+    if (err) {
+      return console.error('Query failed:', err);
+    }
+    console.log('Query successful!  Server responded with: \n', JSON.parse(body));
   });
 });
 
