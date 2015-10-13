@@ -1,15 +1,26 @@
 require('dotenv').load();
 var prompt = require('prompt');
 var request = require('request');
+var baseURL = 'https://sandbox.drizly.com/api/v3';
+var partnerToken, userToken, userid, addressid, creditcardid, lon, lat, storeid;
+
+prompt.message = 'DrizlyDash Setup Script\nIf you haven\'t already created a Drizly account, please go to https://drizly.com/session/register\nand signup and fill in your default address and credit card.\n'.red;
+prompt.delimiter = ">".cyan;
 
 prompt.start();
 
 // Login
 prompt.get([{
+    name: 'partner',
+    description: 'Enter your Drizly API Partner Token',
+    required: true
+  }, {
     name: 'email',
+    description: 'Enter your Drizly email',
     required: true
   }, {
     name: 'password',
+    description: 'Enter your Drizly password',
     hidden: true,
     conform: function (value) {
       return true;
@@ -17,12 +28,14 @@ prompt.get([{
   }], function (err, result) {
   console.log('Command-line input received:');
   console.log('  email: ' + result.email);
-  console.log('  password: ' + result.password);
+  console.log('  password: ********');
 
-  var endpoint = process.env.URL + '/user/authenticate';
+  partnerToken = result.partner;
+
+  var endpoint = baseURL + '/user/authenticate';
 
   var formData = {
-    partner_token: process.env.PARTNER_TOKEN,
+    partner_token: partnerToken,
     email: result.email,
     password: result.password
   };
@@ -31,6 +44,10 @@ prompt.get([{
       return console.error('Login failed:', err);
     }
     console.log('Login successful!  Server responded with: \n', JSON.parse(body));
+    userToken = JSON.parse(body).token.token;
+    userid = JSON.parse(body).token.user_id;
+    addressid = JSON.parse(body).user.default_delivery_address.address_id;
+    creditcardid = JSON.parse(body).user.default_saved_credit_card.saved_credit_card_id;
   });
 });
 
@@ -52,6 +69,16 @@ prompt.get([{
    
   geocoder.geocode(result.address, function(err, res) {
       console.log(res);
+      lat = res[0].latitude;
+      lon = res[0].longitude;
+      var endpoint = baseURL + '/store/resolve?partner_token=' + partnerToken + '&token=' + userToken + '&latitude=' + lat + '&longitude=' + lon;
+      request(endpoint, function (err, response, body) {
+        if (err) {
+          return console.error('Store Lookup failed:', err);
+        }
+        console.log('Store lookup successful!  Server responded with: \n', JSON.parse(body).stores[0]);
+        storeid = JSON.parse(body).stores[0].id;
+      });
   });
 });
 
@@ -63,13 +90,13 @@ prompt.get([{
   console.log('Command-line input received:');
   console.log('  query: ' + result.query);
 
-  var endpoint = process.env.URL + '/catalog/filter?partner_token=' + process.env.PARTNER_TOKEN + '&token=' + process.env.TOKEN + '&per_page=100&store_id=92&q=' + result.query;
+  var endpoint = baseURL + '/catalog/filter?partner_token=' + partnerToken + '&token=' + userToken + '&per_page=100&store_id=' + storeid + '&q=' + result.query;
 
   request(endpoint, function (err, response, body) {
     if (err) {
       return console.error('Query failed:', err);
     }
-    console.log('Query successful!  Server responded with: \n', JSON.parse(body));
+    console.log('Query successful!  Server responded with: \n', JSON.parse(body).catalog_items);
   });
 });
 
