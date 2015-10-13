@@ -1,5 +1,4 @@
 require('dotenv').load();
-var Drizly = require('./Drizly.js');
 var prompt = require('prompt');
 var request = require('request');
 

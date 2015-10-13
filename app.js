@@ -1,5 +1,5 @@
 require('dotenv').load();
-var drizly = require('./Dizly.js');
+var request = require('request');
 var dash_button = require('node-dash-button');
 
 //Drizly Logic
