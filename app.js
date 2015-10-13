@@ -8,9 +8,11 @@ var formDataCheckout = {
     partner_token: process.env.PARTNER_TOKEN,
     token: process.env.TOKEN,
     delivery_address_id: process.env.ADDRESS_ID,
-    saved_credit_card_id: process.end.CREDIT_CARD_ID,
-    items[249325]: 1,
-    items[515105]: 1,
+    saved_credit_card_id: process.env.CREDIT_CARD_ID,
+    'delivery_location[latitude]': process.env.LATITUDE,
+    'delivery_location[longitude]': process.env.LONGITUDE,
+    'items[249325]': 1,
+    'items[515105]': 1,
     order_comment: 'This was ordered via Amazon Dash Button'
 };
 
