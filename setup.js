@@ -1,6 +1,6 @@
 var prompt = require('prompt');
 var request = require('request');
-var baseURL, partnerToken, userToken, userid, addressid, creditcardid, lon, lat, storeid;
+var dashButton, baseURL, partnerToken, userToken, userid, addressid, creditcardid, lon, lat, storeid;
 
 console.log('DrizlyDash Setup Script\nIf you haven\'t already created a Drizly account, please go to https://drizly.com/session/register\nand signup and fill in your default address and credit card.\n');
 prompt.message = 'DrizlyDash'.red;
@@ -10,6 +10,10 @@ prompt.start();
 
 // Login
 prompt.get([{
+    name: 'dash',
+    description: 'Enter the Dash Button MAC',
+    required: true
+  }, {
     name: 'url',
     description: 'Enter the Drizly API URL',
     required: true
@@ -33,10 +37,12 @@ prompt.get([{
     description: 'Enter your alcohol query'
   }], function (err, result) {
   console.log('Command-line input received:');
-  console.log('  email: ' + result.url);
+  console.log('  dash button: ' + result.dash);
+  console.log('  base url: ' + result.url);
   console.log('  email: ' + result.email);
   console.log('  password: ********');
 
+  dashButton = result.dash;
   baseURL = result.url;
   partnerToken = result.partner;
 
@@ -81,7 +87,7 @@ prompt.get([{
       });
 
       var fs = require('fs');
-      var data = 'DASH_MAC_ADDRESS=XX:yy:zz:11:22:33\nURL='+baseURL+'\nPARTNER_TOKEN='+partnerToken+'\nTOKEN='+userToken+'\nUSER_ID='+userid+'\nADDRESS_ID='+addressid+'\nCREDIT_CARD_ID='+creditcardid+'\nLATITUDE='+lat+'\nLONGITUDE='+lon+'\nSTORE_ID='+storeid;
+      var data = 'DASH_MAC_ADDRESS='+dashButton+'\nURL='+baseURL+'\nPARTNER_TOKEN='+partnerToken+'\nTOKEN='+userToken+'\nUSER_ID='+userid+'\nADDRESS_ID='+addressid+'\nCREDIT_CARD_ID='+creditcardid+'\nLATITUDE='+lat+'\nLONGITUDE='+lon+'\nSTORE_ID='+storeid;
       fs.writeFile('.env', data, function(err) {
           if(err) {
               return console.log(err);
