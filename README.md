@@ -2,7 +2,7 @@
 DrizlyDash
 ====
 This is a node.js application that "hacks" your [Amazon Dash Button](http://www.amazon.com/dashbutton) to order you alcohol from [Drizly](https://www.drizly.com/)!
-After my first app [PizzaDash](https://medium.com/@brody_berson/hacking-amazon-s-5-dash-button-to-order-domino-s-pizza-9d19c9d04646) I felt like, what goes best with pizza? Simple answer, beer. So I set out to figure out how to get beer delivered to me, and in my area, there is Drizly who happens to have an API available to [developers](http://developers.drizly.com/).
+After my first app [PizzaDash](https://medium.com/@brody_berson/hacking-amazon-s-5-dash-button-to-order-domino-s-pizza-9d19c9d04646) ([source code](http://www.github.com/bhberson/pizzadash)) I felt like, what goes best with pizza? Simple answer, beer. So I set out to figure out how to get beer delivered to me, and in my area, there is Drizly who happens to have an API available to [developers](http://developers.drizly.com/).
 I am using a npm module to listen for the button press [hortinstein](https://github.com/hortinstein)'s [Node-Dash-Button](https://github.com/hortinstein/node-dash-button).
 
 One idea would be to have this [always running](#always-running) via a local server such as a Raspberry Pi and have on demand alcohol ordering whenever you just need a drink! ;)
@@ -24,11 +24,13 @@ Setup/Run
 1. Run ` npm install ` the first time so all npm requirements will be installed.
 3. Find Dash Button
   - Run ` sudo node node_modules/node-dash-button/bin/findbutton ` and press the button
-4. Run ` node setup.js ` script.
+4. Run ` node setup.js ` script which will ask a few question to create a `.env` file to store your private information.
   - Add your Amazon Dash Button's address from step 3
   - Add your Partner Token that is handed out by [Drizly](http://developers.drizly.com/)
   - You will then log into your Drizly Account (If you haven't already created a Drizly account, please go to https://drizly.com/session/register and signup and _fill in your default address and credit card_.)
-5. Run ` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
+5. Currently right now you have to manually add your order to `app.js`
+  - On ~ line 14/15 you can see `items[249325]` with the integer being a specific item which you can get by querying the catalog in the `setup.js` script right now. See [To do](#to-do) 
+6. Run ` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
 
 Always Running
 ----
@@ -36,4 +38,5 @@ This [article](http://weworkweplay.com/play/raspberry-pi-nodejs/) shows you what
 
 To do
 ----
+- Modify `setup.js` to allow user to create an order from queries to the catalog or create a new script that only queries the catalog
 - Other ideas?
