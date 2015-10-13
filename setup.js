@@ -4,6 +4,7 @@ var request = require('request');
 
 prompt.start();
 
+// Login
 prompt.get([{
     name: 'email',
     required: true
@@ -14,9 +15,6 @@ prompt.get([{
       return true;
     }
   }], function (err, result) {
-  //
-  // Log the results.
-  //
   console.log('Command-line input received:');
   console.log('  email: ' + result.email);
   console.log('  password: ' + result.password);
@@ -36,6 +34,29 @@ prompt.get([{
   });
 });
 
+// Get Lat/Long
+prompt.get([{
+  name:'address',
+  description: 'Enter your address'
+  }], function (err, result) {
+  console.log('Command-line input received:');
+  console.log('  address: ' + result.address);
+  var geocoderProvider = 'openstreetmap';
+  var httpAdapter = 'https';
+  var extra = {
+      language: 'English',
+      email: 'brody.berson@gmail.com',
+      formatter: null
+  };
+  var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, extra);
+   
+  geocoder.geocode(result.address, function(err, res) {
+      console.log(res);
+  });
+});
+
+
+// Query Store
 prompt.get([{
   name:'query',
   description: 'Enter your alcohol query'

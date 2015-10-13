@@ -7,6 +7,7 @@
     "arp-listener": "0.0.0",
     "dotenv": "^1.2.0",
     "node-dash-button": "^0.1.1",
+    "node-geocoder": "^3.4.1",
     "prompt": "^0.2.14",
     "request": "^2.64.0"
   },
