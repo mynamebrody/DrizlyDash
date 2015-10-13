@@ -13,7 +13,6 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "node setup.js",
     "start": "sudo node app.js"
   },
   "repository": {

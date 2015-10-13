@@ -24,11 +24,11 @@ Setup/Run
 1. Run ` npm install ` the first time so all npm requirements will be installed.
 3. Find Dash Button
   - Run ` sudo node node_modules/node-dash-button/bin/findbutton ` and press the button
-4. Run `node setup.js` script.
+4. Run ` node setup.js ` script.
   - Add your Amazon Dash Button's address from step 3
   - Add your Partner Token that is handed out by [Drizly](http://developers.drizly.com/)
   - You will then log into your Drizly Account (If you haven't already created a Drizly account, please go to https://drizly.com/session/register and signup and _fill in your default address and credit card_.)
-5. Run` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
+5. Run ` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
 
 Always Running
 ----
@@ -36,5 +36,4 @@ This [article](http://weworkweplay.com/play/raspberry-pi-nodejs/) shows you what
 
 To do
 ----
-- Smooth things out and make a setup script for first time users that will create an `app.js` file automatically for them
 - Other ideas?
