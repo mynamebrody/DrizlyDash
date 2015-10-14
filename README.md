@@ -28,9 +28,10 @@ Setup/Run
   - Add your Amazon Dash Button's address from step 3
   - Add your Partner Token that is handed out by [Drizly](http://developers.drizly.com/)
   - You will then log into your Drizly Account (If you haven't already created a Drizly account, please go to https://drizly.com/session/register and signup and _fill in your default address and credit card_.)
-5. Currently right now you have to manually add your order to `app.js`
+5. Rerun ` node setup.js ` script which will now ask you for a query to check out the catalog at your closest store.
+6. Currently right now you have to manually add your order to `app.js`
   - On ~ line 14/15 you can see `items[249325]` with the integer being a specific item which you can get by querying the catalog in the `setup.js` script right now. See [To do](#to-do) 
-6. Run ` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
+7. Run ` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
 
 Always Running
 ----
@@ -38,5 +39,5 @@ This [article](http://weworkweplay.com/play/raspberry-pi-nodejs/) shows you what
 
 To do
 ----
-- Modify `setup.js` to allow user to create an order from queries to the catalog or create a new script that only queries the catalog
+- Modify `setup.js` to allow user to create an order from queries to the catalog
 - Other ideas?
