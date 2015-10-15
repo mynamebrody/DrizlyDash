@@ -22,16 +22,66 @@ Contributing
 Setup/Run
 ====
 1. Run ` npm install ` the first time so all npm requirements will be installed.
-3. Find Dash Button
+2. Find Dash Button
   - Run ` sudo node node_modules/node-dash-button/bin/findbutton ` and press the button
-4. Run ` node setup.js ` script which will ask a few question to create a `.env` file to store your private information.
-  - Add your Amazon Dash Button's address from step 3
+3. Run ` node setup.js ` script which will ask a few question to create a `.env` file to store your private information.
+  - Add your Amazon Dash Button's address from step 2
   - Add your Partner Token that is handed out by [Drizly](http://developers.drizly.com/)
   - You will then log into your Drizly Account (If you haven't already created a Drizly account, please go to https://drizly.com/session/register and signup and _fill in your default address and credit card_.)
-5. Rerun ` node setup.js ` script which will now ask you for a query to check out the catalog at your closest store.
-6. Currently right now you have to manually add your order to `app.js`
+4. Rerun ` node setup.js ` script which will now ask you for a query to check out the catalog at your closest store.
+  - See [Example Query](#example-query) for how to select your items
+5. Currently right now you have to manually add your order to `app.js`
   - On ~ line 14/15 you can see `items[249325]` with the integer being a specific item which you can get by querying the catalog in the `setup.js` script right now. See [To do](#to-do) 
-7. Run ` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
+6. Run ` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
+ 
+Example Query
+----
+On step 4/5 Above where you need query the catalog and find what you want to order, here is an example output and how to select the correct item number: If you look underneath `variants: > availability: > item_id: 123456` That is the exact __item__ you need to choose for that specific store.
+
+```bash
+...
+You are about to query Store: 92
+DrizlyDash>Enter your alcohol query> sculpin
+
+Command-line input received:
+  query: sculpin
+
+Query successful!  Server responded with:
+[ { catalog_item_id: 810,
+    name: 'Ballast Point Sculpin IPA',
+    slug: 'ballast-point-sculpin-ipa',
+    brand_name: 'Ballast Point',
+    variants:
+     [ { variant_id: 20054,
+         display_name: 'Ballast Point Sculpin IPA 6 Cans',
+         availability:
+          [ { item_id: 515105,
+              store_id: 92,
+              quantity_on_hand: 54,
+              price: '$14.49',
+              price_raw: 14.49,
+              show_in_catalog: true } ],
+         container_qty: 6,
+         container_type: 'Can',
+         volume: 12,
+         volume_units: 'OZ',
+         short_description: '6 Cans' },
+       { variant_id: 8744,
+         display_name: 'Ballast Point Sculpin IPA 6 Bottles',
+         availability:
+          [ { item_id: 248290,
+              store_id: 92,
+              quantity_on_hand: 64,
+              price: '$14.49',
+              price_raw: 14.49,
+              show_in_catalog: true } ],
+         container_qty: 6,
+         container_type: 'Bottle',
+         volume: 12,
+         volume_units: 'OZ',
+         short_description: '6 Bottles' } ],
+  ...
+```
 
 Always Running
 ----
