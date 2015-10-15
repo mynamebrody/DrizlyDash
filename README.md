@@ -1,6 +1,8 @@
 ![Drizly Dash](http://i.imgur.com/KbanITJ.png)
 DrizlyDash
 ====
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bhberson/DrizlyDash?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 This is a node.js application that "hacks" your [Amazon Dash Button](http://www.amazon.com/dashbutton) to order you alcohol from [Drizly](https://www.drizly.com/)!
 After my first app [PizzaDash](https://medium.com/@brody_berson/hacking-amazon-s-5-dash-button-to-order-domino-s-pizza-9d19c9d04646) ([source code](http://www.github.com/bhberson/pizzadash)) I felt like, what goes best with pizza? Simple answer, beer. So I set out to figure out how to get beer delivered to me, and in my area, there is Drizly who happens to have an API available to [developers](http://developers.drizly.com/).
 I am using a npm module to listen for the button press [hortinstein](https://github.com/hortinstein)'s [Node-Dash-Button](https://github.com/hortinstein/node-dash-button).
