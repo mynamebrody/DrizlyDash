@@ -1,7 +1,8 @@
 var dotenv = require('dotenv').load({silent: true}),
   prompt = require('prompt'),
   request = require('request'),
-  util = require('util');
+  util = require('util'),
+  prettyjson = require('prettyjson');
 
 if (dotenv == false){
   var dashButton, baseURL, partnerToken, userToken, userid, addressid, creditcardid, lon, lat, storeid;
@@ -58,8 +59,14 @@ if (dotenv == false){
       if (err) {
         return console.error('\nLogin failed:', err);
       }
-      var jsonBody = JSON.parse(body);
-      console.log('\nLogin successful!  Server responded with: \n', jsonBody);
+      var jsonBody = JSON.parse(body),
+          jsonOptions = {
+            keysColor: 'magenta',
+            dashColor: 'red',
+            stringColor: 'white',
+            numberColor: 'green'
+          };
+      console.log('\nLogin successful!  Server responded with: \n', prettyjson.render(jsonBody, jsonOptions));
       userToken = jsonBody.token.token;
       userid = jsonBody.token.user_id;
       addressid = jsonBody.user.default_delivery_address.address_id;
@@ -74,7 +81,7 @@ if (dotenv == false){
           return console.error('\nStore Lookup failed:', err);
         }
         jsonBody = JSON.parse(body);
-        console.log('\nStore lookup successful!  Server responded with: \n', jsonBody.stores[0]);
+        console.log('\nStore lookup successful!  Server responded with: \n', prettyjson.render(jsonBody.stores[0], jsonOptions));
         storeid = jsonBody.stores[0].id;
 
         var fs = require('fs');
