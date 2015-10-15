@@ -1,6 +1,7 @@
 var dotenv = require('dotenv').load({silent: true}),
   prompt = require('prompt'),
-  request = require('request');
+  request = require('request'),
+  util = require('util');
 
 if (dotenv == false){
   var dashButton, baseURL, partnerToken, userToken, userid, addressid, creditcardid, lon, lat, storeid;
@@ -107,14 +108,14 @@ if (dotenv == false){
       description: 'Enter your alcohol query'
     }], function (err, result) {
     console.log('Command-line input received:');
-    console.log('\n  query: ' + result.query);
+    console.log('  query: ' + result.query);
     var endpoint = process.env.URL + '/catalog/filter?partner_token=' + process.env.PARTNER_TOKEN + '&token=' + process.env.TOKEN + '&per_page=100&store_id=' + process.env.STORE_ID + '&q=' + result.query;
 
     request(endpoint, function (err, response, body) {
       if (err) {
         return console.error('\nQuery failed:', err);
       }
-      console.log('\nQuery successful!  Server responded with: \n', JSON.parse(body).catalog_items);
+      console.log('\nQuery successful!  Server responded with: \n', util.inspect(JSON.parse(body).catalog_items, false, null));
     });
   });
 
