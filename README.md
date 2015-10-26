@@ -26,19 +26,20 @@ Setup/Run
 1. Run ` npm install ` the first time so all npm requirements will be installed.
 2. Find Dash Button
   - Run ` sudo node node_modules/node-dash-button/bin/findbutton ` and press the button
-3. Run ` node setup.js ` script which will ask a few question to create a `.env` file to store your private information.
+3. Run ` node accountCreation.js ` script to create a Drizly account under your unique partner token.
+4. Run ` node setup.js ` script which will ask a few question to create a `.env` file to store your private information.
   - Add your Amazon Dash Button's address from step 2
   - Add your Partner Token that is handed out by [Drizly](http://developers.drizly.com/)
-  - You will then log into your Drizly Account (If you haven't already created a Drizly account, please go to https://drizly.com/session/register and signup and _fill in your default address and credit card_.)
-4. Rerun ` node setup.js ` script which will now ask you for a query to check out the catalog at your closest store.
+  - You will then log into your Drizly Account (If you haven't already created a Drizly account, please run `node accountCreation.js` and signup and _fill in your default address and credit card_.)
+5. Rerun ` node setup.js ` script which will now ask you for a query to check out the catalog at your closest store.
   - See [Example Query](#example-query) for how to select your items
-5. Currently right now you have to manually add your order to `app.js`
+6. Currently right now you have to manually add your order to `app.js`
   - On ~ line 14/15 you can see `items[249325]` with the integer being a specific item which you can get by querying the catalog in the `setup.js` script right now. See [To do](#to-do) 
-6. Run ` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
+7. Run ` npm start ` and press your Dash Button that you have set up and BAM beer/wine/liquor will be coming soon!
  
 Example Query
 ----
-On step 4/5 Above where you need query the catalog and find what you want to order, here is an example output and how to select the correct item number: If you look underneath `variants: > availability: > item_id: 123456` That is the exact __item__ you need to choose for that specific store.
+On step 5/6 Above where you need query the catalog and find what you want to order, here is an example output and how to select the correct item number: If you look underneath `variants: > availability: > item_id: 123456` That is the exact __item__ you need to choose for that specific store.
 
 ```bash
 ...
@@ -92,4 +93,5 @@ This [article](http://weworkweplay.com/play/raspberry-pi-nodejs/) shows you what
 To do
 ----
 - Modify `setup.js` to allow user to create an order from queries to the catalog
+- Create a localhost webpage that you can create account and search the catalog to build your order
 - Other ideas?

@@ -7,7 +7,7 @@ var dotenv = require('dotenv').load({silent: true}),
 if (dotenv == false){
   var dashButton, baseURL, partnerToken, userToken, userid, addressid, creditcardid, lon, lat, storeid;
 
-  console.log('DrizlyDash Setup Script\nIf you haven\'t already created a Drizly account, please go to https://drizly.com/session/register\nand signup and fill in your default address and credit card.\n');
+  console.log('DrizlyDash Setup Script\nIf you haven\'t already created a Drizly account specific for your Partner Token, run `node accountCreation.js`\nand signup and fill in your default address and credit card.\n');
   prompt.message = 'DrizlyDash'.red;
   prompt.delimiter = ">".cyan;
 
