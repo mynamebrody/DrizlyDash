@@ -90,6 +90,10 @@ Always Running
 ----
 This [article](http://weworkweplay.com/play/raspberry-pi-nodejs/) shows you what you can do with a [Raspberry Pi](https://www.raspberrypi.org/) to set this up as a node server running all the time on your network and it literally would be the press of a button *whenever* you wanted!
 
+AWS IoT Button Version
+----
+Here is my small [Gist](https://gist.github.com/bhberson/ab99c5f53467b9b481c1) that is my AWS Lambda function that is fired off when pressing the Amazon [AWS IoT Button](http://aws.amazon.com/iot/button/). In my Medium article, I explain in depth how to use it.
+
 To do
 ----
 - Modify `setup.js` to allow user to create an order from queries to the catalog
