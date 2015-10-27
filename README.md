@@ -27,6 +27,7 @@ Setup/Run
 2. Find Dash Button
   - Run ` sudo node node_modules/node-dash-button/bin/findbutton ` and press the button
 3. Run ` node accountCreation.js ` script to create a Drizly account under your unique partner token.
+  - You need to create a new account using your unique partner token, even if you have already created one on Drizly's website
 4. Run ` node setup.js ` script which will ask a few question to create a `.env` file to store your private information.
   - Add your Amazon Dash Button's address from step 2
   - Add your Partner Token that is handed out by [Drizly](http://developers.drizly.com/)
