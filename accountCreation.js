@@ -147,7 +147,7 @@ prompt.get([{
                 state: result.state,
                 zip: result.zip,
                 phone: result.phone,
-                is_default: 'true'
+                is_default_delivery: 'true'
             };
             request.post({
                 url: endpoint,
