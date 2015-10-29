@@ -9,6 +9,8 @@ I am using a npm module to listen for the button press [hortinstein](https://git
 
 One idea would be to have this [always running](#always-running) via a local server such as a Raspberry Pi and have on demand alcohol ordering whenever you just need a drink! ;)
 
+I wrote a blog post about my experience here on [Medium](https://medium.com/@brody_berson/drizly-dash-beer-me-with-the-press-of-a-button-a8c1185d316f)!
+
 Requirements
 ====
 __pcap__
